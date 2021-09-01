@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/images/explotion_1.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/bomb_2.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/bomb_3.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/explotion_3.png" type="Texture" id=4]
+[ext_resource path="res://scripts/Bomb.gd" type="Script" id=5]
+[ext_resource path="res://assets/images/explotion_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/bomb_4.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/bomb_1.png" type="Texture" id=8]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 3.73143
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 13.0882
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "toExplote",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "explote",
+"speed": 2.0
+} ]
+
+[node name="Bomb" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"enemy",
+"menor",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+disabled = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "idle"
+
+[node name="BombTic" type="Timer" parent="."]
+one_shot = true
+
+[node name="DisapearExplotion" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="BombTic" to="." method="_on_BombTic_timeout"]
+[connection signal="timeout" from="DisapearExplotion" to="." method="_on_DisapearExplotion_timeout"]

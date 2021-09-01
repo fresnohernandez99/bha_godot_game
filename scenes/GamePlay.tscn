@@ -1,0 +1,507 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://objects/Platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/ParallaxBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/images/bg_1_4.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/bg_1_3.png" type="Texture" id=5]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/GamePlay.gd" type="Script" id=8]
+[ext_resource path="res://scripts/TimerToContinue.gd" type="Script" id=9]
+[ext_resource path="res://assets/fonts/font_pc_text.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://assets/fonts/btn_font.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/images/btn/powerShield-1.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/btn/powerShield-3.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/btn/powerSpeed-1.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/btn/powerShield-2.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/btn/powerSpeed-2.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/btn/powerSpeed-3.png" type="Texture" id=17]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 10
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.141176, 0.137255, 0.137255, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.12549, 0.0901961, 0.0901961, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 25
+font_data = ExtResource( 10 )
+
+[node name="GamePlay" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="bg_1_4" type="Sprite" parent="BackgroundLayer"]
+position = Vector2( 160, 96 )
+texture = ExtResource( 4 )
+
+[node name="bg_1_3" type="Sprite" parent="BackgroundLayer"]
+modulate = Color( 1, 1, 1, 0.807843 )
+position = Vector2( 160, 96 )
+texture = ExtResource( 5 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
+layer = -1
+
+[node name="MainCanvas" type="CanvasLayer" parent="."]
+
+[node name="Timers" type="Node" parent="MainCanvas"]
+
+[node name="Timer_GenCoin" type="Timer" parent="MainCanvas/Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Timer_GenPowerCoin" type="Timer" parent="MainCanvas/Timers"]
+wait_time = 15.0
+one_shot = true
+
+[node name="Timer_Regulars" type="Timer" parent="MainCanvas/Timers"]
+one_shot = true
+
+[node name="Timer_Blades" type="Timer" parent="MainCanvas/Timers"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Timer_Bombs" type="Timer" parent="MainCanvas/Timers"]
+wait_time = 3.0
+one_shot = true
+
+[node name="TimerToContinue" type="Timer" parent="MainCanvas/Timers"]
+pause_mode = 2
+wait_time = 4.0
+one_shot = true
+script = ExtResource( 9 )
+
+[node name="TimerPowerSpeed" type="Timer" parent="MainCanvas/Timers"]
+wait_time = 15.0
+one_shot = true
+
+[node name="TimerPowerShield" type="Timer" parent="MainCanvas/Timers"]
+wait_time = 15.0
+one_shot = true
+
+[node name="Positions" type="Node2D" parent="MainCanvas"]
+
+[node name="RegularPos_1" type="Position2D" parent="MainCanvas/Positions"]
+position = Vector2( -50, 48 )
+
+[node name="RegularPos_2" type="Position2D" parent="MainCanvas/Positions"]
+position = Vector2( -50, 86 )
+
+[node name="RegularPos_3" type="Position2D" parent="MainCanvas/Positions"]
+position = Vector2( -50, 124 )
+
+[node name="RegularPos_4" type="Position2D" parent="MainCanvas/Positions"]
+position = Vector2( -50, 162 )
+
+[node name="RegularPos_5" type="Position2D" parent="MainCanvas/Positions"]
+position = Vector2( 370, 34 )
+
+[node name="RegularPos_6" type="Position2D" parent="MainCanvas/Positions"]
+position = Vector2( 370, 66 )
+
+[node name="RegularPos_7" type="Position2D" parent="MainCanvas/Positions"]
+position = Vector2( 370, 104 )
+
+[node name="RegularPos_8" type="Position2D" parent="MainCanvas/Positions"]
+position = Vector2( 370, 146 )
+
+[node name="RegularPos_9" type="Position2D" parent="MainCanvas/Positions"]
+position = Vector2( 70, 0 )
+
+[node name="RegularPos_10" type="Position2D" parent="MainCanvas/Positions"]
+position = Vector2( 130, 0 )
+
+[node name="RegularPos_11" type="Position2D" parent="MainCanvas/Positions"]
+position = Vector2( 190, 0 )
+
+[node name="RegularPos_12" type="Position2D" parent="MainCanvas/Positions"]
+position = Vector2( 250, 0 )
+
+[node name="Background" type="Node2D" parent="MainCanvas"]
+
+[node name="Panel" type="Panel" parent="MainCanvas/Background"]
+modulate = Color( 0.0588235, 0.843137, 0.972549, 0.113725 )
+margin_right = 320.0
+margin_bottom = 192.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Platform" parent="MainCanvas" instance=ExtResource( 1 )]
+position = Vector2( 160.014, 183.845 )
+
+[node name="Player" parent="MainCanvas" instance=ExtResource( 7 )]
+position = Vector2( 160, 96 )
+
+[node name="EnemyGroup" type="Node2D" parent="MainCanvas"]
+
+[node name="CoinGroup" type="Node2D" parent="MainCanvas"]
+
+[node name="KillZone" type="Area2D" parent="MainCanvas"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainCanvas/KillZone"]
+polygon = PoolVector2Array( -109.989, -1.53851, -79.1994, -19.3846, -82.371, 216.732, 390.696, 222.077, 387.745, -23.8745, 414.75, -3.32031, 415.641, 247.022, -109.098, 245.24 )
+
+[node name="Gui" type="Control" parent="MainCanvas"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player1Points" type="Label" parent="MainCanvas/Gui"]
+modulate = Color( 1, 1, 1, 0.733333 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_right = 100.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PowerBtns" type="Control" parent="MainCanvas/Gui"]
+modulate = Color( 1, 1, 1, 0.654902 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -60.0
+margin_top = 13.0
+margin_right = -13.0
+margin_bottom = 96.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeedPower" type="TextureButton" parent="MainCanvas/Gui/PowerBtns"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -17.7661
+margin_top = -36.2678
+margin_right = 46.2339
+margin_bottom = 27.7322
+rect_scale = Vector2( 0.5, 0.5 )
+disabled = true
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 16 )
+texture_disabled = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MainCanvas/Gui/PowerBtns/SpeedPower"]
+visible = false
+margin_left = -9.0
+margin_top = -6.0
+margin_right = 1.0
+margin_bottom = 10.0
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShieldPower" type="TextureButton" parent="MainCanvas/Gui/PowerBtns"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -17.7661
+margin_top = 3.73222
+margin_right = 46.2339
+margin_bottom = 67.7322
+rect_scale = Vector2( 0.5, 0.5 )
+disabled = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 15 )
+texture_disabled = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="MainCanvas/Gui/PowerBtns/ShieldPower"]
+visible = false
+margin_left = -10.0
+margin_top = -9.0
+margin_bottom = 7.0
+text = "S"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoseDialog" type="Control" parent="MainCanvas/Gui"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="MainCanvas/Gui/LoseDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 67.0
+margin_top = 31.0
+margin_right = -66.0
+margin_bottom = -32.0
+color = Color( 0.52549, 0.517647, 0.517647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MainCanvas/Gui/LoseDialog"]
+anchor_right = 1.0
+margin_left = 58.0
+margin_top = 36.0
+margin_right = -58.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 2 )
+text = "Your work is done"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="MainCanvas/Gui/LoseDialog"]
+anchor_right = 1.0
+margin_left = 59.0
+margin_top = 46.0
+margin_right = -59.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.588235, 0.835294, 0.917647, 1 )
+text = "Air points:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PointsOnDialog" type="Label" parent="MainCanvas/Gui/LoseDialog"]
+anchor_right = 1.0
+margin_left = 60.0
+margin_top = 62.0
+margin_right = -59.0
+margin_bottom = 84.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.588235, 0.835294, 0.917647, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="MainCanvas/Gui/LoseDialog"]
+anchor_right = 1.0
+margin_left = 108.0
+margin_top = 91.0
+margin_right = -107.0
+margin_bottom = 106.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 11 )
+text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToMenu" type="Button" parent="MainCanvas/Gui/LoseDialog"]
+anchor_right = 1.0
+margin_left = 108.335
+margin_top = 109.645
+margin_right = -106.665
+margin_bottom = 124.645
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 11 )
+text = "Back to menu"
+
+[node name="Exit" type="Button" parent="MainCanvas/Gui/LoseDialog"]
+anchor_right = 1.0
+margin_left = 108.0
+margin_top = 130.0
+margin_right = -107.0
+margin_bottom = 146.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 11 )
+text = "Exit"
+
+[node name="PauseDialog" type="Control" parent="MainCanvas/Gui"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="MainCanvas/Gui/PauseDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 67.0
+margin_top = 22.0
+margin_right = -66.0
+margin_bottom = -6.0
+color = Color( 0.52549, 0.517647, 0.517647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MainCanvas/Gui/PauseDialog"]
+anchor_right = 1.0
+margin_top = 22.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 2 )
+text = "Pause"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="MainCanvas/Gui/PauseDialog"]
+anchor_right = 1.0
+margin_left = 75.0
+margin_top = 72.0
+margin_right = -76.0
+margin_bottom = 94.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 11 )
+text = "Restart"
+
+[node name="Continue" type="Button" parent="MainCanvas/Gui/PauseDialog"]
+anchor_right = 1.0
+margin_left = 75.0
+margin_top = 44.0
+margin_right = -76.0
+margin_bottom = 66.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 11 )
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToMenu" type="Button" parent="MainCanvas/Gui/PauseDialog"]
+anchor_right = 1.0
+margin_left = 75.0
+margin_top = 101.0
+margin_right = -76.0
+margin_bottom = 123.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 11 )
+text = "Back to menu"
+
+[node name="Options" type="Button" parent="MainCanvas/Gui/PauseDialog"]
+anchor_right = 1.0
+margin_left = 75.0
+margin_top = 130.0
+margin_right = -76.0
+margin_bottom = 152.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 11 )
+text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="MainCanvas/Gui/PauseDialog"]
+anchor_right = 1.0
+margin_left = 75.0
+margin_top = 158.0
+margin_right = -76.0
+margin_bottom = 180.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 11 )
+text = "Exit"
+
+[node name="Pause" type="Button" parent="MainCanvas/Gui"]
+margin_top = -2.0
+margin_right = 32.0
+margin_bottom = 31.0
+focus_mode = 0
+custom_fonts/font = SubResource( 7 )
+enabled_focus_mode = 0
+text = "ii"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueLabel" type="Label" parent="MainCanvas/Gui"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -8.0
+margin_right = 20.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.843137, 0.117647, 0.12549, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="MainCanvas/Timers/Timer_GenCoin" to="." method="_on_Timer_GenCoin_timeout"]
+[connection signal="timeout" from="MainCanvas/Timers/Timer_GenPowerCoin" to="." method="_on_Timer_GenPowerCoin_timeout"]
+[connection signal="timeout" from="MainCanvas/Timers/Timer_Regulars" to="." method="_on_Timer_Regulars_timeout"]
+[connection signal="timeout" from="MainCanvas/Timers/Timer_Blades" to="." method="_on_Timer_Blades_timeout"]
+[connection signal="timeout" from="MainCanvas/Timers/Timer_Bombs" to="." method="_on_Timer_Bombs_timeout"]
+[connection signal="timeout" from="MainCanvas/Timers/TimerToContinue" to="." method="_on_TimerToContinue_timeout"]
+[connection signal="timeout" from="MainCanvas/Timers/TimerPowerSpeed" to="." method="_on_TimerPowerSpeed_timeout"]
+[connection signal="timeout" from="MainCanvas/Timers/TimerPowerShield" to="." method="_on_TimerPowerShield_timeout"]
+[connection signal="CoinCollected" from="MainCanvas/Player" to="." method="_on_Player_CoinCollected"]
+[connection signal="Lose" from="MainCanvas/Player" to="." method="_on_Player_Lose"]
+[connection signal="pressed" from="MainCanvas/Gui/PowerBtns/SpeedPower" to="." method="_on_SpeedPower_pressed"]
+[connection signal="pressed" from="MainCanvas/Gui/PowerBtns/ShieldPower" to="." method="_on_ShieldPower_pressed"]
+[connection signal="pressed" from="MainCanvas/Gui/LoseDialog/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="MainCanvas/Gui/LoseDialog/BackToMenu" to="." method="_on_BackToMenu_pressed"]
+[connection signal="pressed" from="MainCanvas/Gui/LoseDialog/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="MainCanvas/Gui/PauseDialog/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="MainCanvas/Gui/PauseDialog/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="MainCanvas/Gui/PauseDialog/BackToMenu" to="." method="_on_BackToMenu_pressed"]
+[connection signal="pressed" from="MainCanvas/Gui/PauseDialog/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="MainCanvas/Gui/PauseDialog/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="MainCanvas/Gui/Pause" to="." method="_on_Pause_pressed"]
