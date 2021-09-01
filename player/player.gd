@@ -15,6 +15,9 @@ var shieldActivated = false
 
 var actualAnim = "max"
 
+var actualSpeed = 1
+const increasse = 1.5
+
 #nodes
 onready var bodySprite = $BodySprite
 onready var propSprite = $PropSprite
@@ -55,15 +58,15 @@ func movement(delta):
 	#barra
 	if flyTime <= 0:
 		flyBar.frame = 0
-	elif flyTime >=1 and flyTime < 2:
+	elif flyTime >=2 and flyTime < 4:
 		flyBar.frame = 1
-	elif flyTime >=2 and flyTime < 3:
+	elif flyTime >=4 and flyTime < 6:
 		flyBar.frame = 2
-	elif flyTime >=3 and flyTime < 4:
+	elif flyTime >=6 and flyTime < 8:
 		flyBar.frame = 3
-	elif flyTime >=4 and flyTime < 5:
+	elif flyTime >=8 and flyTime < 10:
 		flyBar.frame = 4
-	elif flyTime >=5:
+	elif flyTime >=10:
 		flyBar.frame = 5
 		propSprite.play("stop")
 	
@@ -74,16 +77,21 @@ func movement(delta):
 		mov.x =-1
 		#$NSprite.animation = "izkierda"
 	
-	if up and flyTime <= 5:
-		mov.y = -1 * speed
+	if up and flyTime <= 10:
+		if actualSpeed < speed:
+			actualSpeed += increasse
+		
+		mov.y = -1 * actualSpeed
 		flyTime += delta * 0.6
 		propSprite.play("fly")
-		
 	else:
-		mov.y = gravity 
+		if actualSpeed > 1:
+			actualSpeed -= increasse
+		
+		mov.y = gravity - actualSpeed / 2
 	if down:
 		mov.y = 2 * speed
-		
+	
 	if is_on_floor() and flyTime > 0:
 		flyTime -= 0.03
 		

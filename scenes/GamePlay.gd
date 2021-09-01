@@ -291,7 +291,7 @@ func _on_KillZone_body_entered(body):
 #region -> lose dialog
 func _on_Restart_pressed():
 	get_tree().paused = false
-	get_tree().change_scene("res://scenes/GameScene_1.tscn")
+	get_tree().change_scene("res://scenes/GamePlay.tscn")
 
 func _on_BackToMenu_pressed():
 	get_tree().paused = false
