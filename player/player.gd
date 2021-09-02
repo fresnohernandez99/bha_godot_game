@@ -16,11 +16,14 @@ var shieldActivated = false
 var actualAnim = "max"
 
 var actualSpeed = 1
-const increasse = 1.5
+const increasse = 3
+
+var shipIsOn = "center"
 
 #nodes
 onready var bodySprite = $BodySprite
 onready var propSprite = $PropSprite
+onready var trailerSprite = $Trailer
 onready var flyBar = $Gui/FlyBar
 onready var tween = $Tween
 onready var hitTimeShowIn = $HitTimeShowIn
@@ -44,18 +47,24 @@ func movement(delta):
 	var right = int(Input.is_action_pressed("ui_right"))
 	var left = int(Input.is_action_pressed("ui_left"))
 	
-	#sonidos de movimeintos
-	if int(Input.is_action_just_pressed("ui_right")):
-		pass
-		#$giros.play()
-	if int(Input.is_action_just_pressed("ui_left")):
-		pass
-		#$giros.play()
+	if right:
+		turnRight()
+	if left:
+		turnLeft()
+	
+	if !right and !left:
+		turnCenter()
+	
+	if rotation_degrees < 0:
+		shipIsOn = "left"
+	
+	if rotation_degrees > 1:
+		shipIsOn = "right"
 	
 	if Input.is_action_just_released("ui_up"):
 		propSprite.play("stop")
 	
-	#barra
+	#bar
 	if flyTime <= 0:
 		flyBar.frame = 0
 	elif flyTime >=2 and flyTime < 4:
@@ -69,13 +78,6 @@ func movement(delta):
 	elif flyTime >=10:
 		flyBar.frame = 5
 		propSprite.play("stop")
-	
-	if(right):
-		mov.x =1
-		#$NSprite.animation = "derecha"
-	if(left):
-		mov.x =-1
-		#$NSprite.animation = "izkierda"
 	
 	if up and flyTime <= 10:
 		if actualSpeed < speed:
@@ -94,11 +96,41 @@ func movement(delta):
 	
 	if is_on_floor() and flyTime > 0:
 		flyTime -= 0.03
-		
+	
+	if is_on_floor():
+		turnCenter()
+		trailerSprite.play("land")
+	else: 
+		trailerSprite.play("go")
+	
 	position.x = clamp(position.x, 0, viewPortRange.x)
 	position.y = clamp(position.y, 0, viewPortRange.y)
 	
 	move_and_slide(Vector2(mov.x * speed,mov.y), Vector2(0,-1))
+
+func turnLeft():
+	mov.x =-1
+	bodySprite.play(actualAnim + "_left")
+	if rotation_degrees > -20 and !is_on_floor():
+		rotation_degrees -= 1
+
+func turnRight():
+	mov.x =1
+	bodySprite.play(actualAnim + "_right")
+	if rotation_degrees < 20 and !is_on_floor():
+		rotation_degrees += 1
+
+func turnCenter():
+	bodySprite.play(actualAnim + "_idle")
+	var aux
+	if shipIsOn == "left":
+		aux = 1
+	if shipIsOn == "right":
+		aux = -1
+	if rotation_degrees < 0 or rotation_degrees > 1:
+		rotation_degrees += aux
+	else:
+		shipIsOn = "center"
 
 func setLife(lf):
 	if life > lf:

@@ -2,20 +2,20 @@
 
 [ext_resource path="res://assets/fonts/font_pc_text.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/btn_font.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/images/ship_prop_2.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/ship_prop_3.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/prop_idle_2.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/prop_idle_4.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/bat_1.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/ship_max_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/prop_idle_3.png" type="Texture" id=6]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=7]
-[ext_resource path="res://assets/images/ship_prop_1.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/prop_idle_1.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/bat_3.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/bat_4.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/bat_5.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/ship_max_3.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/ship_max_idle_1.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/bat_6.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/ship_prop_4.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/ship_max_right_1.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/bat_2.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/ship_max_1.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/ship_max_left_1.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -27,18 +27,18 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 16 ), ExtResource( 6 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 1.0
 } ]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 3.0
 } ]
 
 [sub_resource type="SpriteFrames" id=5]
@@ -169,19 +169,19 @@ flat = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 157.975, 69.9192 )
 frames = SubResource( 3 )
-frame = 1
-playing = true
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite"]
-position = Vector2( 0, 16 )
-frames = SubResource( 4 )
 frame = 3
 playing = true
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite"]
+position = Vector2( 0, 13 )
+frames = SubResource( 4 )
+frame = 2
+playing = true
+
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="AnimatedSprite"]
-position = Vector2( -0.396851, 9.52441 )
+position = Vector2( -0.396851, 6.52441 )
 frames = SubResource( 5 )
-frame = 6
+frame = 3
 playing = true
 
 [node name="MisionSelect" type="Control" parent="."]

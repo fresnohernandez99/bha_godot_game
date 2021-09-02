@@ -1,27 +1,27 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=45 format=2]
 
-[ext_resource path="res://assets/images/ship_max_1.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/ship_mid_idle_1.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/bat_2.png" type="Texture" id=2]
 [ext_resource path="res://player/player.gd" type="Script" id=3]
-[ext_resource path="res://assets/images/ship_max_3.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/prop_idle_2.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/bat_5.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/bat_3.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/bat_6.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/bat_4.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/bat_1.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/ship_mid_2.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/ship_final_1.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/ship_final_3.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/ship_prop_stop_1.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/ship_prop_stop_2.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/ship_prop_stop_3.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/ship_prop_stop_4.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/ship_prop_1.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/ship_prop_2.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/ship_prop_3.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/ship_prop_4.png" type="Texture" id=20]
-[ext_resource path="res://assets/images/ship_mid_3.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/ship_max_2.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/ship_mid_idle_2.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/ship_mid_left_1.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/prop_idle_4.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/ship_final_left_1.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/ship_max_right_1.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/ship_mid_right_1.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/prop_fly_1.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/prop_fly_2.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/ship_final_idle_2.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/prop_idle_3.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/prop_idle_1.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/ship_max_left_1.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/ship_max_idle_1.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/shieldPower-3.png" type="Texture" id=23]
 [ext_resource path="res://assets/images/shieldPower-5.png" type="Texture" id=24]
 [ext_resource path="res://assets/images/shieldPower-2.png" type="Texture" id=25]
@@ -32,38 +32,85 @@
 [ext_resource path="res://assets/images/speedPower-5.png" type="Texture" id=30]
 [ext_resource path="res://assets/images/speedPower-3.png" type="Texture" id=31]
 [ext_resource path="res://assets/images/speedPower-1.png" type="Texture" id=32]
-[ext_resource path="res://assets/images/ship_mid_1.png" type="Texture" id=33]
-[ext_resource path="res://assets/images/ship_final_2.png" type="Texture" id=34]
+[ext_resource path="res://assets/images/ship_final_idle_1.png" type="Texture" id=33]
+[ext_resource path="res://assets/images/ship_final_right_1.png" type="Texture" id=34]
+[ext_resource path="res://assets/images/ship_trailer_2.png" type="Texture" id=35]
+[ext_resource path="res://assets/images/ship_trailer_3.png" type="Texture" id=36]
+[ext_resource path="res://assets/images/ship_trailer_4.png" type="Texture" id=37]
+[ext_resource path="res://assets/images/ship_trailer_1.png" type="Texture" id=38]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 20 ), ExtResource( 4 ), ExtResource( 19 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "stop",
-"speed": 5.0
+"speed": 3.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "fly",
-"speed": 5.0
+"speed": 3.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 22 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 15 ) ],
 "loop": true,
-"name": "max",
+"name": "mid_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 34 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 21 ) ],
 "loop": true,
-"name": "final",
+"name": "max_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 33 ), ExtResource( 10 ), ExtResource( 21 ) ],
+"frames": [ ExtResource( 33 ), ExtResource( 18 ) ],
 "loop": true,
-"name": "mid",
+"name": "final_idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "max_right",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "mid_idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "mid_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ) ],
+"loop": true,
+"name": "final_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "final_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "max_idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 38 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ) ],
+"loop": false,
+"name": "land",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 36 ), ExtResource( 35 ), ExtResource( 38 ), null ],
+"loop": false,
+"name": "go",
+"speed": 6.0
 } ]
 
 [sub_resource type="SpriteFrames" id=3]
@@ -98,30 +145,37 @@ script = ExtResource( 3 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -3.82064, -7.69727 )
 scale = Vector2( 1.9484, 2.16848 )
-polygon = PoolVector2Array( -0.601191, -1.56157, 4.39455, -1.61598, 6.84701, 0.505961, 7.14482, 3.38383, 7.60394, 4.31457, 10.1472, 4.42339, 13.3263, 7.17103, 12.8116, 8.99372, 11.1464, 10.4084, 7.69477, 10.3539, 7.57366, 9.53781, -3.68947, 9.4834, -3.71975, 10.4628, -7.26218, 10.4084, -7.38329, 9.64663, -8.2916, 9.53781, -9.47242, 8.04157, -9.35131, 7.17103, -6.23275, 4.31457, -3.7803, 4.36898, -3.28231, 3.5654, -3.20503, 0.750801 )
+polygon = PoolVector2Array( 0.309855, 0.291139, 3.51782, 0.314015, 5.5037, 2.1441, 6.44572, 3.47091, 11.1304, 5.85002, 3.56874, 8.18338, 3.01947, 9.09786, 2.01568, 9.0298, 0.934428, 9.08345, -0.0211256, 8.16051, -7.30269, 5.8729, -2.64351, 3.49379 )
 
 [node name="PropSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, 16 )
+position = Vector2( 0, 13 )
 frames = SubResource( 1 )
 animation = "stop"
 frame = 1
+playing = true
 
 [node name="BodySprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
-animation = "max"
-frame = 1
+animation = "max_idle"
+playing = true
+
+[node name="Trailer" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 11 )
+frames = SubResource( 6 )
+animation = "go"
+frame = 4
 playing = true
 
 [node name="SpeedSprite" type="AnimatedSprite" parent="."]
 visible = false
 frames = SubResource( 3 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="ShieldSprite" type="AnimatedSprite" parent="."]
 visible = false
 frames = SubResource( 4 )
-frame = 3
+frame = 4
 playing = true
 
 [node name="Gui" type="Control" parent="."]
@@ -130,9 +184,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -20.0
-margin_top = -20.0
+margin_top = -22.0
 margin_right = 20.0
-margin_bottom = 20.0
+margin_bottom = 18.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
