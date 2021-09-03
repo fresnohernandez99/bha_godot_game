@@ -15,7 +15,8 @@ func _on_Coin_body_entered(body):
 	if body.is_in_group("player") and !toked:
 		sprite.animation = "toked"
 		sprite.play()
-		body.setLife(body.life + 1)
+		if body.life < 3:
+			body.setLife(body.life + 1)
 		toked = true
 		timerOut.start()
 

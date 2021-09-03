@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://assets/images/ship_mid_idle_1.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/bat_2.png" type="Texture" id=2]
@@ -54,16 +54,6 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 15 ) ],
-"loop": true,
-"name": "mid_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ) ],
-"loop": true,
-"name": "max_left",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 33 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "final_idle",
@@ -74,46 +64,56 @@ animations = [ {
 "name": "max_right",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "final_left",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 1 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "mid_idle",
 "speed": 3.0
-}, {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "mid_left",
-"speed": 5.0
 }, {
 "frames": [ ExtResource( 34 ) ],
 "loop": true,
 "name": "final_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ) ],
-"loop": true,
-"name": "final_left",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 22 ) ],
 "loop": true,
 "name": "max_idle",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "mid_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "max_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "mid_right",
+"speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 38 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ) ],
 "loop": false,
 "name": "land",
-"speed": 6.0
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 37 ), ExtResource( 36 ), ExtResource( 35 ), ExtResource( 38 ), null ],
 "loop": false,
 "name": "go",
-"speed": 6.0
+"speed": 8.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 32 ), ExtResource( 28 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 30 ) ],
 "loop": true,
@@ -121,7 +121,7 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ ExtResource( 26 ), ExtResource( 25 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 24 ) ],
 "loop": true,
@@ -129,7 +129,10 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="OccluderPolygon2D" id=6]
+polygon = PoolVector2Array( -7.125, -0.0625, -4.875, 2.8125, -0.125, 4, 5.1875, 2.25, 7.1875, 0.0625, 17.8125, 5, 2.875, 12, -3.0625, 12, -18, 5.0625 )
+
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 7 ) ],
 "loop": true,
@@ -151,7 +154,7 @@ polygon = PoolVector2Array( 0.309855, 0.291139, 3.51782, 0.314015, 5.5037, 2.144
 position = Vector2( 0, 13 )
 frames = SubResource( 1 )
 animation = "stop"
-frame = 1
+frame = 3
 playing = true
 
 [node name="BodySprite" type="AnimatedSprite" parent="."]
@@ -161,22 +164,25 @@ playing = true
 
 [node name="Trailer" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 11 )
-frames = SubResource( 6 )
+frames = SubResource( 3 )
 animation = "go"
 frame = 4
 playing = true
 
 [node name="SpeedSprite" type="AnimatedSprite" parent="."]
 visible = false
-frames = SubResource( 3 )
-frame = 3
+frames = SubResource( 4 )
+frame = 2
 playing = true
 
 [node name="ShieldSprite" type="AnimatedSprite" parent="."]
 visible = false
-frames = SubResource( 4 )
-frame = 4
+frames = SubResource( 5 )
+frame = 3
 playing = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 6 )
 
 [node name="Gui" type="Control" parent="."]
 anchor_left = 0.5
@@ -194,7 +200,7 @@ __meta__ = {
 [node name="FlyBar" type="AnimatedSprite" parent="Gui"]
 position = Vector2( 19.1505, 27.9316 )
 scale = Vector2( 0.8, 0.8 )
-frames = SubResource( 5 )
+frames = SubResource( 7 )
 
 [node name="Tween" type="Tween" parent="."]
 
