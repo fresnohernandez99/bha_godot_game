@@ -50,10 +50,13 @@ func movement(delta):
 	
 	if right:
 		turnRight()
+		bodySprite.play(actualAnim + "_right")
 	if left:
 		turnLeft()
+		bodySprite.play(actualAnim + "_left")
 	
 	if !right and !left:
+		bodySprite.play(actualAnim + "_idle")
 		turnCenter()
 		gradualStop()
 	
@@ -103,22 +106,17 @@ func updateFlyBar():
 
 func turnLeft():
 	if actualHorizontalSpeed > (speed * -1):
-		actualHorizontalSpeed -= increasse
-	#mov.x = actualHorizontalSpeed
-	bodySprite.play(actualAnim + "_left")
+		actualHorizontalSpeed -= increasse *2
 	if rotation_degrees > -20 and !is_on_floor():
 		rotation_degrees -= 1
 
 func turnRight():
 	if actualHorizontalSpeed < (speed * 1):
-		actualHorizontalSpeed += increasse
-	#mov.x = actualHorizontalSpeed
-	bodySprite.play(actualAnim + "_right")
+		actualHorizontalSpeed += increasse *2
 	if rotation_degrees < 20 and !is_on_floor():
 		rotation_degrees += 1
 
 func turnCenter():
-	bodySprite.play(actualAnim + "_idle")
 	var aux
 	if shipIsOn == "left":
 		aux = 1
@@ -141,7 +139,7 @@ func goUpGoDown(up, down, delta):
 			actualFlySpeed -= increasse
 		mov.y = gravity - actualFlySpeed
 	if down:
-		mov.y = 2 * speed
+		mov.y = speed + 50
 
 func gradualStop():
 	if is_on_floor():
@@ -177,8 +175,6 @@ func setLife(lf):
 	if life > 3:
 		actualAnim = "max"
 	
-	bodySprite.play(actualAnim)
-
 func collected(points):
 	actualPoints += points
 	emit_signal("CoinCollected", actualPoints)

@@ -29,7 +29,6 @@ onready var coinExtraLife = preload("res://objects/points/ExtraLife.tscn")
 
 onready var powerCoins = [coinExtraBat, coinExtraLife]
 
-
 #node
 onready var player1 = $MainCanvas/Player
 onready var timerGenCoin = $MainCanvas/Timers/Timer_GenCoin
@@ -166,12 +165,13 @@ func enemyGenerator():
 
 #region -> regulars
 func genRegular():
-	var gen = int(rand_range(0,2))
+	var gen = int(rand_range(0,3))
 	if gen == 1:
 		if actualLevel == 1:
 			var ins = hammer.instance()
 			var sel = int(rand_range(0, firstPositions.size()))
 			ins.global_position = firstPositions[sel].global_position
+			showAlert(firstPositions[sel])
 			startRegular(ins, sel)
 		elif actualLevel == 2:
 			var regulars = [
@@ -181,6 +181,7 @@ func genRegular():
 			var ins = regulars[int(rand_range(0, regulars.size()))]
 			var sel = int(rand_range(0, firstPositions.size()))
 			ins.global_position = firstPositions[sel].global_position
+			showAlert(firstPositions[sel])
 			startRegular(ins, sel)
 		elif actualLevel == 3:
 			var regulars = [
@@ -190,6 +191,7 @@ func genRegular():
 			var ins = regulars[int(rand_range(0, regulars.size()))]
 			var sel = int(rand_range(0, topPositions.size()))
 			ins.global_position = topPositions[sel].global_position
+			showAlert(topPositions[sel])
 			startRegular(ins, sel)
 		elif actualLevel >= 4:
 			var regulars = [
@@ -199,6 +201,7 @@ func genRegular():
 			var ins = regulars[int(rand_range(0, regulars.size()))]
 			var sel = int(rand_range(0, allPositions.size()))
 			ins.global_position = allPositions[sel].global_position
+			showAlert(allPositions[sel])
 			startRegular(ins, sel)
 
 func startRegular(ins, sel):
@@ -230,6 +233,7 @@ func genBomb():
 	enemyGroup.add_child(ins)
 	var sel = int(rand_range(0, topPositions.size()))
 	ins.global_position = topPositions[sel].global_position
+	showAlert(topPositions[sel])
 
 func _on_Timer_Bombs_timeout():
 	if actualLevel >= 5:
@@ -285,6 +289,12 @@ func _on_KillZone_area_entered(area):
 
 func _on_KillZone_body_entered(body):
 	body.queue_free()
+
+func showAlert(obj: Position2D):
+	var panel: AnimatedSprite = obj.get_node("AlertPanel")
+	print(panel)
+	panel.frame = 0
+	panel.play("default")
 
 #end region -> interactions
 
